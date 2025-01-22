@@ -35,7 +35,7 @@ const SideForm: FC<TSideFormProps> = ({ setIsFormOpen }) => {
       dispatch(
         addLog({
           logId: uuidv4(),
-          logMessage: inputText,
+          logMessage: `새로운 게시판 생성하기: ${inputText}`,
           logAuthor: "user",
           logTimestamp: String(Date.now()),
         })
