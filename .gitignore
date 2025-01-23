@@ -26,4 +26,7 @@ dist-ssr
 
 # Firebase
 src/firebase.ts
-.github/
+.firebase/
+*-service-account.json
+serviceAccountKey.json
+firebase-debug.log
