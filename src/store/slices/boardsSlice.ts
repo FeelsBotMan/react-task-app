@@ -36,6 +36,15 @@ type TDeleteTaskAction = {
     taskId: string;
 }
 
+type TSortAction = {
+    boardIndex: number;
+    droppableIdStart: string;
+    droppableIdEnd: string;
+    droppableIndexStart: number;
+    droppableIndexEnd: number;
+    draggableId: string;
+}
+
 const initialState: TBoardState = {
     modalActive: false,
     boardArray: [
@@ -72,7 +81,7 @@ const initialState: TBoardState = {
                     listName: "List 2",
                     tasks: [
                         {
-                            taskId: "task-0",
+                            taskId: "task-3",
                             taskName: "Task 1",
                             taskDescription: "Description",
                             taskOwner: "Owner",
@@ -182,9 +191,34 @@ const boardsSlice = createSlice({
         },
         setModalActive: (state, { payload }: PayloadAction<boolean>) => {
             state.modalActive = payload;
+        },
+        sort: (state, { payload }: PayloadAction<TSortAction>) => {
+            // same list
+            if (payload.droppableIdStart === payload.droppableIdEnd) {
+                const list = state.boardArray[payload.boardIndex].lists.find(
+                    list => list.listId === payload.droppableIdStart
+                );
+                const card = list?.tasks.splice(payload.droppableIndexStart, 1);
+                list?.tasks.splice(payload.droppableIndexEnd, 0, ...card!);
+            }
+
+            // different list
+            if (payload.droppableIdStart !== payload.droppableIdEnd) {
+                const listStart = state.boardArray[payload.boardIndex].lists.find(
+                    list => list.listId === payload.droppableIdStart
+                );
+                const listEnd = state.boardArray[payload.boardIndex].lists.find(
+                    list => list.listId === payload.droppableIdEnd
+                );
+                const card = listStart?.tasks.splice(payload.droppableIndexStart, 1);
+                listEnd?.tasks.splice(payload.droppableIndexEnd, 0, ...card!);
+            }
+
+
+
         }
     }
 })
 
-export const { addBoard, deleteBoard, deleteList, setModalActive, addList, addTask, updateTask, deleteTask } = boardsSlice.actions;
+export const { addBoard, deleteBoard, deleteList, setModalActive, addList, addTask, updateTask, deleteTask, sort } = boardsSlice.actions;
 export const boardsReducer = boardsSlice.reducer;

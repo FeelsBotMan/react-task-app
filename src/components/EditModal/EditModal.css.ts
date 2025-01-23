@@ -92,3 +92,16 @@ export const input = style({
     fontSize: vars.fontSizing.T4,
     boxShadow: vars.shadow.basic,
 })
+
+export const visuallyHidden = style({
+    position: "absolute",
+    width: "1px",
+    height: "1px",
+    margin: "-1px",
+    overflow: "hidden",
+    border: 0,
+    padding: 0,
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    whiteSpace: "nowrap",
+})

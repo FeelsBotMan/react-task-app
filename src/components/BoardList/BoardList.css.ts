@@ -23,7 +23,8 @@ export const addButton = style({
     color: vars.color.brightText,
     fontSize: vars.fontSizing.T2,
     cursor: "pointer",
-    marginLeft: vars.spacing.big1,
+    marginLeft: vars.spacing.small,
+    marginRight: vars.spacing.small,
     ":hover": {
         opacity: 0.8,
     },
@@ -36,6 +37,7 @@ export const boardItem = style({
     padding: vars.spacing.medium,
     borderRadius: 10,
     cursor: "pointer",
+    marginRight: vars.spacing.big1,
     ":hover": {
         opacity: 0.8,
         transform: "scale(1.03)",
@@ -61,5 +63,18 @@ export const addSection = style({
 export const smallTitle = style({
     color: vars.color.brightText,
     fontSize: vars.fontSizing.T3,
+});
+
+export const userInfo = style({
+    display: "flex",
+    alignItems: "center",
+    marginLeft: vars.spacing.big1,
+    marginRight: vars.spacing.small,
+});
+
+export const userInfoImg = style({
+    width: 30,
+    height: 30,
+    borderRadius: "50%",
 });
 

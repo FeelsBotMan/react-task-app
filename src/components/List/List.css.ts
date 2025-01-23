@@ -37,3 +37,18 @@ export const deleteButton = style({
         opacity: 0.8,
     }
 });
+
+export const addTaskButton = style({
+    backgroundColor: vars.color.mainFaded,
+    display: "flex",
+    alignItems: "center",
+    height: "max-content",
+    borderRadius: 4,
+    marginTop: vars.spacing.small,
+    fontSize: vars.fontSizing.T3,
+    padding: vars.spacing.medium,
+    cursor: "pointer",
+    ":hover": {
+        backgroundColor: vars.color.mainFadedBright
+    }
+});

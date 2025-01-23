@@ -35,7 +35,7 @@ const SideForm: FC<TSideFormProps> = ({ setIsFormOpen }) => {
       dispatch(
         addLog({
           logId: uuidv4(),
-          logMessage: `새로운 게시판 생성하기: ${inputText}`,
+          logMessage: `게시판 생성: ${inputText}`,
           logAuthor: "user",
           logTimestamp: String(Date.now()),
         })
@@ -48,7 +48,7 @@ const SideForm: FC<TSideFormProps> = ({ setIsFormOpen }) => {
         className={input}
         autoFocus
         type="text"
-        placeholder="새로운 게시판 등록하기"
+        placeholder="게시판 이름 입력"
         value={inputText}
         onChange={handleChange}
         onBlur={handleOnBlur}

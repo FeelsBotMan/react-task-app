@@ -1,7 +1,7 @@
 import { useState, FC } from "react";
 import DropDownForm from "./DropDownForm/DropDownForm";
 import { IoIosAdd } from "react-icons/io";
-import { listButton, taskButton } from "./ActionButton.css";
+import { listButton } from "./ActionButton.css";
 
 type TActionButtonProps = {
   boardId: string;
@@ -9,23 +9,19 @@ type TActionButtonProps = {
   list?: boolean;
 };
 
-const ActionButton: FC<TActionButtonProps> = ({ boardId, listId, list }) => {
+const ActionButton: FC<TActionButtonProps> = ({ boardId, listId }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const buttonText = list ? "새로운 리스트 등록" : "새로운 태스크 등록";
+
   return isFormOpen ? (
     <DropDownForm
       setIsFormOpen={setIsFormOpen}
-      list={list ? true : false}
       boardId={boardId}
       listId={listId}
     />
   ) : (
-    <div
-      onClick={() => setIsFormOpen(true)}
-      className={list ? listButton : taskButton}
-    >
+    <div onClick={() => setIsFormOpen(true)} className={listButton}>
       <IoIosAdd />
-      <p>{buttonText}</p>
+      <p>리스트 생성하기</p>
     </div>
   );
 };

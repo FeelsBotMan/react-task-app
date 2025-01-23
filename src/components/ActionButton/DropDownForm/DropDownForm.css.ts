@@ -40,8 +40,9 @@ export const button = style({
     width: 150,
     color: vars.color.brightText,
     padding: vars.spacing.medium,
-    fontSize: vars.fontSizing.T3,
+    fontSize: vars.fontSizing.T4,
     backgroundColor: vars.color.mainDarker,
+    borderRadius: 4,
     border: "none",
     cursor: "pointer",
     ":hover": {
